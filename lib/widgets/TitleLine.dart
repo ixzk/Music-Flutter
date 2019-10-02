@@ -12,14 +12,29 @@ class TitleLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Text(
-          this.title ?? '', 
-          style: TextStyle(color: Colors.white),
+        Positioned(
+          bottom: 10,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(5.0),
+            child: Container(
+              width: this.title.length * 25.0,
+              height: 10,
+              color: Color(0xFFFC1F50),
+            ),
+          )
         ),
-        Column(
-          children: <Widget>[
-            Expanded(child: SizedBox()),
-          ],
+        Positioned(
+          width: this.title.length * 25.0,
+          bottom: 10,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                this.title ?? '', 
+                style: TextStyle(color: Colors.white, letterSpacing: 5.0, fontSize: 20.0)
+              ),
+            ],
+          ),
         )
       ],
     );
