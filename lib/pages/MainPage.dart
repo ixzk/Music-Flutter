@@ -7,9 +7,9 @@ import 'package:music/widgets/TitleLine.dart';
 class MainPage extends StatelessWidget {
 
   final String title;
-  final Widget widget;
+  final Widget body;
 
-  MainPage({this.title, this.widget});
+  MainPage({this.title, this.body});
 
   Widget build(BuildContext context) {
     return Material(
@@ -19,7 +19,7 @@ class MainPage extends StatelessWidget {
           backgroundColor: Color(0xFF0E0F23),
           leading: TitleLine(title: '${title ?? ""}'),
         ),
-        child: widget ?? Text("请传入Widget")
+        child: body ?? Text("请传入Widget")
       ),
     );
   }

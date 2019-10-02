@@ -3,6 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music/pages/music/Music.dart';
+import 'package:music/pages/MainPage.dart';
+import 'package:music/pages/mine/Mine.dart';
 
 class App extends StatelessWidget {
   
@@ -38,7 +40,7 @@ class App extends StatelessWidget {
           activeColor: Color(0xFFFC1F50),
         ),
         tabBuilder: (context, index) {
-          return Music();
+          return MainPage(title: '个人中心', body: Mine());
         },
       )
     );
