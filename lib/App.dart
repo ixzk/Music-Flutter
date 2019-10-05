@@ -6,6 +6,7 @@ import 'package:music/pages/music/Music.dart';
 import 'package:music/pages/MainPage.dart';
 import 'package:music/pages/mine/Mine.dart';
 import 'package:music/pages/square/Square.dart';
+import 'package:music/pages/channel/Channel.dart';
 
 class App extends StatelessWidget {
   
@@ -41,8 +42,15 @@ class App extends StatelessWidget {
           activeColor: Color(0xFFFC1F50),
         ),
         tabBuilder: (context, index) {
-          // return MainPage(title: '个人中心', body: Mine());
-          return MainPage(title: '广场', body: Square());
+          Widget page;
+          switch (index) {
+            case 0: page = MainPage(title: '音乐', body: Music()); break;
+            case 1: page = MainPage(title: '歌单', body: Channel()); break;
+            case 2: page = MainPage(title: '社区', body: Square()); break;
+            case 3: page = MainPage(title: '我的', body: Mine()); break;
+          }
+
+          return page;
         },
       )
     );
