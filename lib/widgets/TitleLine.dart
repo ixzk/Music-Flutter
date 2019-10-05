@@ -31,7 +31,7 @@ class TitleLine extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title ?? '', 
-                style: TextStyle(color: Colors.white, letterSpacing: 5.0, fontSize: 20.0)
+                style: TextStyle(color: Colors.white, letterSpacing: 5.0, fontSize: 20.0, fontWeight: FontWeight.bold)
               ),
             ],
           ),
