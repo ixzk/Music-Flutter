@@ -18,7 +18,7 @@ class TitleMore extends StatelessWidget {
           title ?? '', 
           style: TextStyle(
             color: Colors.white,
-            fontSize: 18.0,
+            fontSize: 16.0,
             fontWeight: FontWeight.w500
           )
         ),
@@ -28,7 +28,7 @@ class TitleMore extends StatelessWidget {
               '更多', 
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 17.0
+                fontSize: 14.0
               )
             ),
             Icon(Icons.chevron_right, color: Colors.grey)
