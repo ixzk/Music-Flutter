@@ -61,6 +61,12 @@ flutter:
    - images/music/paihang.png
    - images/music/geshou.png
 
+   # 播放器
+   - images/player/playing.png
+   - images/player/pause.png
+   - images/player/pre.png
+   - images/player/next.png
+
    #Demo
    - images/demo/avatar.png
    - images/demo/poster.png
