@@ -1,6 +1,7 @@
 // 带下划线的标题
 
 import 'package:flutter/material.dart';
+import 'package:music/util/constant/GlobalColors.dart';
 
 class TitleLine extends StatelessWidget {
 
@@ -19,7 +20,7 @@ class TitleLine extends StatelessWidget {
             child: Container(
               width: this.title.length * 25.0,
               height: 10,
-              color: Color(0xFFFC1F50),
+              color: GlobalColors.red,
             ),
           )
         ),
@@ -31,7 +32,7 @@ class TitleLine extends StatelessWidget {
             children: <Widget>[
               Text(
                 this.title ?? '', 
-                style: TextStyle(color: Colors.white, letterSpacing: 5.0, fontSize: 20.0, fontWeight: FontWeight.bold)
+                style: TextStyle(color: GlobalColors.black, letterSpacing: 5.0, fontSize: 20.0, fontWeight: FontWeight.bold)
               ),
             ],
           ),

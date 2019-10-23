@@ -2,7 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music/widgets/TitleLine.dart';
+import 'package:music/util/constant/GlobalColors.dart';
+import 'package:music/widgets/TitleMore.dart';
+import 'package:music/widgets/MusicCell.dart';
+import 'package:music/util/http/Http.dart';
+import 'package:music/util/http/API.dart';
+import 'package:music/pages/player/Player.dart';
 
 class Music extends StatelessWidget {
 
@@ -13,8 +18,13 @@ class Music extends StatelessWidget {
   final navArea = 1;    // 金刚位
   final listsArea = 2;  // 歌单推荐
 
+  var context;
+
   @override
   Widget build(BuildContext context) {
+
+    this.context = context;
+
     return ListView.builder(
       padding: EdgeInsets.all(15.0),
       itemCount: items.length,
@@ -37,52 +47,63 @@ class Music extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Container(
-                height: 90,
-                color: Color(0xFF232336),
-                child: Row(
+                height: 150,
+                color: GlobalColors.white,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Image.asset('images/music/geshou.png', width: 35.0, height: 35.0),
-                        Text('歌手', style: TextStyle(color: Colors.white, fontSize: 12.0))
+                        _getTopButton('私人电台', icon: 'fm'),
+                        _getTopButton('在家', icon: 'home'),
+                        _getTopButton('工作', icon: 'work'),
+                        _getTopButton('上网', icon: 'net')
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
-                        Image.asset('images/music/paihang.png', width: 35.0, height: 35.0),
-                        Text('排行', style: TextStyle(color: Colors.white, fontSize: 12.0))
+                        _getTopButton('店铺', icon: 'dianpu'),
+                        _getTopButton('运动', icon: 'yundong'),
+                        _getTopButton('轻松', icon: 'qingsong'),
+                        _getTopButton('甜蜜', icon: 'tianmi')
                       ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('images/music/fenlei.png', width: 35.0, height: 35.0),
-                        Text('分类', style: TextStyle(color: Colors.white, fontSize: 12.0))
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset('images/music/qita.png', width: 35.0, height: 35.0),
-                        Text('享听', style: TextStyle(color: Colors.white, fontSize: 12.0))
-                      ],
-                    ),
-                  ],
+                    )
+                  ]
                 ),
               )
             )
           );
         } else if (index == listsArea) {
-          return Icon(Icons.access_time);
+          return TitleMore(title: '当前最热');
         } else {
-          return ListTile(
-            title: Text('${items[index - 3]}', style: TextStyle(color: Colors.white),)
-          );
+          return MusicCell('黑丫头', desc: '汪小敏', image: Image.asset('images/demo/poster.png'), duration: '03:20');
         }
       },
+    );
+  }
+
+  /// 金刚位置
+  Widget _getTopButton(String title, {String icon, String key}) {
+    return Expanded(
+      child: GestureDetector(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset('images/music/$icon.png', width: 25.0, height: 25.0),
+            SizedBox(height: 5),
+            Text('$title', style: TextStyle(color: GlobalColors.black, fontSize: 12.0))
+          ],
+        ),
+        onTap: (){
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Player()),
+          );
+        }
+      ),
+      flex: 1,
     );
   }
 }

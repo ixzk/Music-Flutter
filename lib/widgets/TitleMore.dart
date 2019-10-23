@@ -1,6 +1,7 @@
 // 带更多按钮的标题
 
 import 'package:flutter/material.dart';
+import 'package:music/util/constant/GlobalColors.dart';
 
 class TitleMore extends StatelessWidget {
 
@@ -17,12 +18,13 @@ class TitleMore extends StatelessWidget {
         Text(
           title ?? '', 
           style: TextStyle(
-            color: Colors.white,
+            color: GlobalColors.black,
             fontSize: 16.0,
             fontWeight: FontWeight.w500
           )
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
             Text(
               '更多', 

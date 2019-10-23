@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music/widgets/TitleLine.dart';
+import 'package:music/util/constant/GlobalColors.dart';
 
 class MainPage extends StatelessWidget {
 
@@ -14,9 +15,10 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: CupertinoPageScaffold(
-        backgroundColor: Color(0xFF0E0F23),
+        backgroundColor: GlobalColors.bgColor,
         navigationBar: CupertinoNavigationBar(
-          backgroundColor: Color(0xFF0E0F23),
+          border: null,
+          backgroundColor: GlobalColors.bgColor,
           leading: TitleLine(title: '${title ?? ""}'),
         ),
         child: body ?? Text("请传入Widget")

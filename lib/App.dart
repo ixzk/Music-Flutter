@@ -2,20 +2,28 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:music/util/constant/GlobalColors.dart';
 import 'package:music/pages/music/Music.dart';
 import 'package:music/pages/MainPage.dart';
 import 'package:music/pages/mine/Mine.dart';
 import 'package:music/pages/square/Square.dart';
 import 'package:music/pages/channel/Channel.dart';
+import 'package:music/widgets/MiniPlayer.dart';
 
 class App extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    // return MaterialApp(
+    //   home: Material(
+    //     child: Player(),
+    //   ),
+    // );
     return MaterialApp(
       home: CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
-          backgroundColor: Color(0xFF111222),
+          border: null,
+          backgroundColor: GlobalColors.white,
           items: [
             BottomNavigationBarItem(
               icon: Image.asset('images/tabbar/music.png', width: 25.0, height: 25.0),
@@ -50,7 +58,17 @@ class App extends StatelessWidget {
             case 3: page = MainPage(title: '我的', body: Mine()); break;
           }
 
-          return page;
+          return Container(
+            color: GlobalColors.bgColor,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: page,
+                ),
+                MiniPlayer()
+              ],
+            ),
+          );
         },
       )
     );
